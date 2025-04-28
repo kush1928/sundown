@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="about.css">
-   
 </head>
 
 <body>
@@ -36,24 +35,39 @@
             
             <div class="about-hero">
                 <h1>Our Story <br> of Innovation</h1>
-                <p>Since 1995, SunTuff has been redefining the boundaries of glass technology, combining cutting-edge engineering with sustainable practices to create products that stand the test of time.</p>
-            </div>
-            
-            <div id="hero-shape">
-                <div id="hero-1"></div>
-                <div id="hero-2"></div>
-                <div id="hero-3"></div>
+                <p class="section-description">Since 1995, SunTuff has been redefining the boundaries of glass technology, combining cutting-edge engineering with sustainable practices to create products that stand the test of time.</p>
+                
+                <!-- Animated scroll indicator -->
+                <div class="scroll-indicator">
+                    <div class="mouse">
+                        <div class="wheel"></div>
+                    </div>
+                    <div class="arrow"></div>
+                </div>
+                
+                <!-- Floating background elements -->
+                <div class="hero-shapes">
+                    <div class="hero-shape-1"></div>
+                    <div class="hero-shape-2"></div>
+                    <div class="hero-shape-3"></div>
+                </div>
+                
+                <!-- Floating decorative elements -->
+                <div class="floating-element" style="width: 20vw; height: 20vw; top: 20%; left: 10%;"></div>
+                <div class="floating-element" style="width: 15vw; height: 15vw; top: 60%; left: 70%;"></div>
             </div>
         </div>
         
         <div class="history-section">
-            <h1 style="font-size: 4vw; margin-bottom: 3vw; line-height: 4vw;">Our Journey Through Time</h1>
+            <h1 class="section-header">Our Journey Through Time</h1>
+            <p class="section-description">Milestones that shaped our legacy in glass innovation and sustainability.</p>
             
             <div class="timeline">
                 <div class="timeline-item left">
                     <div class="timeline-content">
                         <div class="timeline-year">1995</div>
                         <p>Founded in a small workshop with a vision to revolutionize glass manufacturing through innovative techniques.</p>
+                        <div class="timeline-icon">🚀</div>
                     </div>
                 </div>
                 
@@ -61,6 +75,7 @@
                     <div class="timeline-content">
                         <div class="timeline-year">2002</div>
                         <p>Launched our first energy-efficient glass product line, setting new industry standards for thermal performance.</p>
+                        <div class="timeline-icon">☀️</div>
                     </div>
                 </div>
                 
@@ -68,6 +83,7 @@
                     <div class="timeline-content">
                         <div class="timeline-year">2008</div>
                         <p>Expanded operations internationally with the opening of our first overseas manufacturing facility in Germany.</p>
+                        <div class="timeline-icon">🌍</div>
                     </div>
                 </div>
                 
@@ -75,6 +91,7 @@
                     <div class="timeline-content">
                         <div class="timeline-year">2015</div>
                         <p>Developed our proprietary PureVision™ technology, achieving unprecedented optical clarity and durability.</p>
+                        <div class="timeline-icon">🔬</div>
                     </div>
                 </div>
                 
@@ -82,6 +99,7 @@
                     <div class="timeline-content">
                         <div class="timeline-year">2020</div>
                         <p>Committed to carbon-neutral production across all facilities, reinforcing our dedication to sustainability.</p>
+                        <div class="timeline-icon">♻️</div>
                     </div>
                 </div>
                 
@@ -89,114 +107,148 @@
                     <div class="timeline-content">
                         <div class="timeline-year">2023</div>
                         <p>Recognized with the Global Innovation Award for our breakthrough SolarShade™ self-tinting glass technology.</p>
+                        <div class="timeline-icon">🏆</div>
                     </div>
                 </div>
             </div>
         </div>
         
         <div class="team-section">
-            <h1 style="font-size: 4vw; margin-bottom: 3vw; line-height: 4vw;">Meet Our Leadership</h1>
-            <p style="font-weight: 200; width: 60%;">A diverse team of visionaries, engineers, and creative minds driving the future of glass technology.</p>
+            <h1 class="section-header">Meet Our Leadership</h1>
+            <p class="section-description">A diverse team of visionaries, engineers, and creative minds driving the future of glass technology.</p>
             
             <div class="team-grid">
                 <div class="team-card">
-                    <div class="team-image" style="background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="team-image" style="background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+                        <div class="social-links">
+                            <a href="#"><span>LinkedIn</span></a>
+                            <a href="#"><span>Twitter</span></a>
+                        </div>
+                    </div>
                     <div class="team-info">
                         <h3>Rajiv Malhotra</h3>
                         <p>Founder & CEO</p>
-                        <p style="color: #666; font-weight: 200;">25+ years in glass technology innovation</p>
+                        <p class="team-bio">25+ years in glass technology innovation</p>
                     </div>
                 </div>
                 
                 <div class="team-card">
-                    <div class="team-image" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="team-image" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+                        <div class="social-links">
+                            <a href="#"><span>LinkedIn</span></a>
+                            <a href="#"><span>Twitter</span></a>
+                        </div>
+                    </div>
                     <div class="team-info">
                         <h3>Sarah Chen</h3>
                         <p>Chief Technology Officer</p>
-                        <p style="color: #666; font-weight: 200;">Materials science expert</p>
+                        <p class="team-bio">Materials science expert</p>
                     </div>
                 </div>
                 
                 <div class="team-card">
-                    <div class="team-image" style="background-image: url('https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="team-image" style="background-image: url('https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+                        <div class="social-links">
+                            <a href="#"><span>LinkedIn</span></a>
+                            <a href="#"><span>Twitter</span></a>
+                        </div>
+                    </div>
                     <div class="team-info">
                         <h3>Michael Johnson</h3>
                         <p>Head of Sustainability</p>
-                        <p style="color: #666; font-weight: 200;">Green manufacturing pioneer</p>
+                        <p class="team-bio">Green manufacturing pioneer</p>
                     </div>
                 </div>
             </div>
         </div>
         
         <div class="values-section">
-            <h1 style="font-size: 4vw; margin-bottom: 3vw; line-height: 4vw;">Our Core Values</h1>
+            <div class="values-pattern"></div>
+            <h1 class="section-header">Our Core Values</h1>
+            <p class="section-description">The principles that guide our innovation and shape our company culture.</p>
             
             <div class="values-grid">
                 <div class="value-card">
                     <div class="value-icon">✦</div>
                     <h3>Innovation</h3>
                     <p>Constantly pushing boundaries to develop glass solutions that redefine what's possible.</p>
+                    <div class="value-decoration"></div>
                 </div>
                 
                 <div class="value-card">
                     <div class="value-icon">♻</div>
                     <h3>Sustainability</h3>
                     <p>Committed to eco-friendly processes that protect our planet for future generations.</p>
+                    <div class="value-decoration"></div>
                 </div>
                 
                 <div class="value-card">
                     <div class="value-icon">✓</div>
                     <h3>Quality</h3>
                     <p>Uncompromising standards in every product that leaves our facilities.</p>
+                    <div class="value-decoration"></div>
                 </div>
                 
                 <div class="value-card">
                     <div class="value-icon">✧</div>
                     <h3>Collaboration</h3>
                     <p>Working closely with clients to create customized solutions for unique challenges.</p>
+                    <div class="value-decoration"></div>
                 </div>
             </div>
         </div>
         
         <div class="stats-section">
-            <h1 style="font-size: 4vw; margin-bottom: 3vw; line-height: 4vw;">By The Numbers</h1>
+            <h1 class="section-header">By The Numbers</h1>
+            <p class="section-description">Quantifying our impact and reach in the glass technology industry.</p>
             
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-number" data-count="27">0</div>
                     <div class="stat-label">Years of Excellence</div>
+                    <div class="stat-decoration"></div>
                 </div>
                 
                 <div class="stat-card">
                     <div class="stat-number" data-count="42">0</div>
                     <div class="stat-label">Countries Served</div>
+                    <div class="stat-decoration"></div>
                 </div>
                 
                 <div class="stat-card">
                     <div class="stat-number" data-count="150">0</div>
                     <div class="stat-label">Patents Held</div>
+                    <div class="stat-decoration"></div>
                 </div>
                 
                 <div class="stat-card">
                     <div class="stat-number" data-count="500">0+</div>
                     <div class="stat-label">Team Members</div>
+                    <div class="stat-decoration"></div>
                 </div>
             </div>
         </div>
-        <div class="stats-section-no-color">
-          
+        
+        <div class="cta-section">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Space?</h2>
+                <p>Discover how SunTuff's innovative glass solutions can elevate your next project.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="cta-button">Contact Us</a>
+                    <a href="newProductsPage.html" class="cta-button secondary">View Products</a>
+                </div>
+            </div>
+            <div class="cta-pattern"></div>
         </div>
     </div>
    
     <div id="footer">
-        <div id="footer-div">
-
-        </div>
+        <div id="footer-div"></div>
         <h1>SunTuFF</h1>
         <div id="footer-bottom">
             <div class="copyright">
                 © 2024 Sun Tuff Pvt Ltd. All rights reserved.
-              </div>
+            </div>
         </div>
     </div>
     
@@ -277,6 +329,33 @@
                     }
                 });
             }
+            
+            // Add floating elements dynamically
+            const floatingContainer = document.querySelector('.about-hero');
+            for (let i = 0; i < 3; i++) {
+                const floatingEl = document.createElement('div');
+                floatingEl.className = 'floating-element';
+                floatingEl.style.width = `${10 + Math.random() * 10}vw`;
+                floatingEl.style.height = floatingEl.style.width;
+                floatingEl.style.top = `${20 + Math.random() * 60}%`;
+                floatingEl.style.left = `${Math.random() * 80}%`;
+                floatingEl.style.opacity = 0.1 + Math.random() * 0.2;
+                floatingContainer.appendChild(floatingEl);
+            }
+
+            // Add animation to value cards on hover
+            document.querySelectorAll('.value-card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    const decoration = card.querySelector('.value-decoration');
+                    decoration.style.transform = 'scaleX(1)';
+                    decoration.style.opacity = '1';
+                });
+                card.addEventListener('mouseleave', () => {
+                    const decoration = card.querySelector('.value-decoration');
+                    decoration.style.transform = 'scaleX(0)';
+                    decoration.style.opacity = '0';
+                });
+            });
         });
     </script>
 </body>
