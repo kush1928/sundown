@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SunTuff Products</title>
+    <link rel="shortcut icon" href="./icon.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <!-- Add in the <head> or right before </body> -->
+
+    <style>
+      /* Previous styles remain the same */
+
+      /* Updated 3D Gallery Styles */
+      .gallery-section {
+        width: 100%;
+        height: 100vh;
+        background-color: #EFEAE3;
+  
+        overflow: hidden;
+      }
+
+      .gallery-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        perspective: 1500px;
+      }
+
+      .gallery-ring {
+        position: relative;
+        width: 100px;
+        height: 200px;
+        transform-style: preserve-3d;
+        user-select: none;
+      }
+
+      .gallery-img {
+        position: absolute;
+        width: 300px;
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 0px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transform-origin: center center -50px;
+        backface-visibility: hidden;
+        transition: transform 0.1s ease;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .gallery-ring {
+          width: 250px;
+          height: 350px;
+        }
+
+        .gallery-img {
+          width: 250px;
+          height: 350px;
+          transform-origin: center center -400px;
+        }
+      }
+      /* Additional styles for product page */
+      .product-hero {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 5vw;
+      }
+
+      .product-categories {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2vw;
+        padding: 5vw;
+      }
+
+      .category-card {
+        background-color: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        transition: transform 0.4s ease;
+      }
+
+      .category-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .category-image {
+        height: 300px;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .category-info {
+        padding: 2vw;
+      }
+
+      .category-info h3 {
+        font-size: 1.8vw;
+        margin-bottom: 1vw;
+        color: #333;
+      }
+
+      .category-info p {
+        color: #666;
+        font-weight: 200;
+        line-height: 1.5;
+      }
+
+      .product-features {
+        padding: 8vw;
+        background-color: #efeae3;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3vw;
+      }
+
+      .feature-card {
+        background-color: white;
+        padding: 3vw;
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+      }
+
+      .feature-icon {
+        height: 60px;
+        width: 60px;
+        background-color: #658b38;
+        border-radius: 50%;
+        margin-bottom: 2vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+      }
+
+      @media (max-width: 768px) {
+        .product-categories,
+        .feature-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .category-info h3 {
+          font-size: 5vw;
+        }
+
+        .product-features {
+          padding: 8vw 5vw;
+        }
+      }
+      
+    </style>
+  </head>
+
+  <body>
+    <!-- <div id="loader">
+      <h1>QUALITY</h1>
+      <h1>INNOVATION</h1>
+      <h1>PERFORMANCE</h1>
+    </div> -->
+
+    <div id="fixed-image"></div>
+    <div id="main">
+      <div id="page1">
+        <nav>
+          <h1>
+            <b>SUN<span style="color: #658b38">TUFF</span></b>
+          </h1>
+          <div id="nav-part2">
+            <h4><a href="#">Home</a></h4>
+            <h4><a href="#">Products</a></h4>
+            <h4><a href="#">About</a></h4>
+            <h4><a href="#">Contact</a></h4>
+          </div>
+          <h3>Menu</h3>
+        </nav>
+
+        <div class="product-hero">
+          <div id="left">
+            <h3>
+              Discover our premium glass solutions engineered for performance,
+              durability, and aesthetic excellence.
+            </h3>
+          </div>
+          <div id="right">
+            <h1>
+              Glass <br />
+              Products <br />
+              Collection
+            </h1>
+          </div>
+        </div>
+
+        <div id="hero-shape">
+          <div id="hero-1"></div>
+          <div id="hero-2"></div>
+          <div id="hero-3"></div>
+        </div>
+      </div>
+      <div class="gallery-section">
+        <div class="gallery-container">
+          <div class="gallery-ring">
+            <div class="gallery-img"></div>
+            <div class="gallery-img"></div>
+            <div class="gallery-img"></div>
+            <div class="gallery-img"></div>
+            <div class="gallery-img"></div>
+            <div class="gallery-img"></div>
+            <div class="gallery-img"></div>
+            <div class="gallery-img"></div>
+            <div class="gallery-img"></div>
+            <div class="gallery-img"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-features">
+        <h1 style="font-size: 4vw; margin-bottom: 3vw; line-height: 4vw">
+          Why Choose SunTuff Glass
+        </h1>
+
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon">✓</div>
+            <h3>Superior Durability</h3>
+            <p>
+              Our glass products are engineered to withstand extreme conditions
+              while maintaining clarity and performance.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">☀</div>
+            <h3>Energy Efficient</h3>
+            <p>
+              Advanced coatings and technologies reduce energy consumption while
+              maximizing natural light.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🛡</div>
+            <h3>Enhanced Safety</h3>
+            <p>
+              Laminated and tempered options provide superior protection without
+              compromising visibility.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🔊</div>
+            <h3>Noise Reduction</h3>
+            <p>
+              Special acoustic glass formulations create quieter, more peaceful
+              environments.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🌱</div>
+            <h3>Sustainable</h3>
+            <p>
+              Eco-friendly manufacturing processes and recyclable materials
+              reduce environmental impact.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">✨</div>
+            <h3>Aesthetic Excellence</h3>
+            <p>
+              Beautiful designs that enhance architectural aesthetics while
+              delivering performance.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div id="page4">
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-color: #658b38">
+              Featured: PureVision™ Clarity Glass
+            </div>
+            <div class="swiper-slide" style="background-color: #3b4c28">
+              New: SolarShade™ Energy Glass
+            </div>
+            <div class="swiper-slide" style="background-color: #769e46">
+              Innovation: SecuraView™ Privacy Glass
+            </div>
+            <div class="swiper-slide" style="background-color: #658b38">
+              Award-Winning: EcoLux™ Sustainable Glass
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="page2">
+        <div id="moving-text">
+          <div class="con">
+            <h1>ARCHITECTURAL</h1>
+            <div id="gola"></div>
+            <h1>AUTOMOTIVE</h1>
+            <div id="gola"></div>
+            <h1>SPECIALTY</h1>
+            <div id="gola"></div>
+          </div>
+          <div class="con">
+            <h1>RESIDENTIAL</h1>
+            <div id="gola"></div>
+            <h1>COMMERCIAL</h1>
+            <div id="gola"></div>
+            <h1>INDUSTRIAL</h1>
+            <div id="gola"></div>
+          </div>
+        </div>
+
+        <div class="product-categories">
+          <div class="category-card">
+            <div
+              class="category-image"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+              "
+            ></div>
+            <div class="category-info">
+              <h3>Architectural Glass</h3>
+              <p>
+                High-performance glass solutions for modern buildings, combining
+                energy efficiency with stunning design.
+              </p>
+            </div>
+          </div>
+
+          <div class="category-card">
+            <div
+              class="category-image"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+              "
+            ></div>
+            <div class="category-info">
+              <h3>Automotive Glass</h3>
+              <p>
+                Advanced automotive glass technologies for safety, comfort, and
+                superior optical clarity.
+              </p>
+            </div>
+          </div>
+
+          <div class="category-card">
+            <div
+              class="category-image"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+              "
+            ></div>
+            <div class="category-info">
+              <h3>Specialty Glass</h3>
+              <p>
+                Custom glass solutions for unique applications, from
+                bullet-resistant to smart glass technologies.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="footer-div"></div>
+      <h1>SunTuFF</h1>
+      <div id="footer-bottom">
+        <div class="copyright">
+          © 2024 Sun Tuff Pvt Ltd. All rights reserved.
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      const scroll = new LocomotiveScroll({
+        el: document.querySelector("#main"),
+        smooth: true,
+      });
+
+      function page4Animation() {
+        var elemC = document.querySelector("#elem-container");
+        var fixed = document.querySelector("#fixed-image");
+        if (elemC && fixed) {
+          elemC.addEventListener("mouseenter", function () {
+            fixed.style.display = "block";
+          });
+          elemC.addEventListener("mouseleave", function () {
+            fixed.style.display = "none";
+          });
+
+          var elems = document.querySelectorAll(".elem");
+          elems.forEach(function (e) {
+            e.addEventListener("mouseenter", function () {
+              var image = e.getAttribute("data-image");
+              fixed.style.backgroundImage = `url(${image})`;
+            });
+          });
+        }
+      }
+
+      function swiperAnimation() {
+        var swiper = new Swiper(".mySwiper", {
+          slidesPerView: "auto",
+          centeredSlides: true,
+          spaceBetween: 100,
+          autoplay: {
+            delay: 2000,
+            disableOnInteraction: false,
+          },
+        });
+      }
+
+      function menuAnimation() {
+        var menu = document.querySelector("nav h3");
+        var full = document.querySelector("#full-scr");
+        var flag = 0;
+
+        if (menu && full) {
+          menu.addEventListener("click", function () {
+            if (flag == 0) {
+              full.style.top = 0;
+              flag = 1;
+            } else {
+              full.style.top = "-100%";
+              flag = 0;
+            }
+          });
+        }
+      }
+
+      function loaderAnimation() {
+        var loader = document.querySelector("#loader");
+        setTimeout(function () {
+          if (loader) loader.style.top = "-100%";
+        }, 4200);
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        swiperAnimation();
+        page4Animation();
+        menuAnimation();
+        loaderAnimation();
+
+        // Add hover effect to category cards
+        const cards = document.querySelectorAll(".category-card");
+        cards.forEach((card) => {
+          card.addEventListener("mouseenter", function () {
+            const img = this.querySelector(".category-image");
+            img.style.transform = "scale(1.05)";
+          });
+          card.addEventListener("mouseleave", function () {
+            const img = this.querySelector(".category-image");
+            img.style.transform = "scale(1)";
+          });
+        });
+      });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+      // Previous JavaScript remains the same
+
+      function init3DGallery() {
+        const ring = document.querySelector(".gallery-ring");
+        const images = document.querySelectorAll(".gallery-img");
+        const count = images.length;
+        let currentAngle = 0;
+        let isDragging = false;
+        let startX, startAngle;
+
+        // Set initial positions
+        gsap.set(ring, { rotationY: 180 });
+
+        images.forEach((img, i) => {
+          // Use glass-related images instead of random picsum
+          const glassImages = [
+            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+            "https://images.unsplash.com/photo-1600566752355-35792bedcfea",
+            "https://images.unsplash.com/photo-1600607688969-a5bfcd646154",
+            "https://images.unsplash.com/photo-1600607687933-ce8a6c25118c",
+            "https://images.unsplash.com/photo-1600566752229-250ed79470f8",
+            "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d",
+            "https://images.unsplash.com/photo-1600566753492-5d8cd1c0d7b9",
+            "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3",
+            "https://images.unsplash.com/photo-1600566753475-8d5f5f4b9d0b",
+            "https://images.unsplash.com/photo-1600566753565-8a5f5f4b9d0c",
+          ];
+
+          img.style.backgroundImage = `url(${glassImages[i]}?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)`;
+
+          // Initial positioning
+          const angle = (i * 360) / count;
+          img.style.transform = `rotateY(${angle}deg) translateZ(500px)`;
+
+          // Hover effects
+          img.addEventListener("mouseenter", () => {
+            gsap.to(images, { opacity: 0.5, duration: 0.3 });
+            gsap.to(img, { opacity: 1, scale: 1.05, duration: 0.3 });
+          });
+
+          img.addEventListener("mouseleave", () => {
+            gsap.to(images, { opacity: 1, scale: 1, duration: 0.3 });
+          });
+        });
+
+        // Mouse/touch events for rotation
+        ring.addEventListener("mousedown", startDrag);
+        ring.addEventListener("touchstart", startDrag, { passive: false });
+
+        function startDrag(e) {
+          e.preventDefault();
+          isDragging = true;
+          startX = e.clientX || e.touches[0].clientX;
+          startAngle = currentAngle;
+          document.body.style.cursor = "grabbing";
+
+          document.addEventListener("mousemove", drag);
+          document.addEventListener("touchmove", drag, { passive: false });
+          document.addEventListener("mouseup", endDrag);
+          document.addEventListener("touchend", endDrag);
+        }
+
+        function drag(e) {
+          if (!isDragging) return;
+          e.preventDefault();
+          const x = e.clientX || e.touches[0].clientX;
+          const deltaX = x - startX;
+          currentAngle = startAngle + deltaX * 0.5;
+
+          gsap.to(ring, {
+            rotationY: currentAngle,
+            duration: 0.1,
+          });
+        }
+
+        function endDrag() {
+          isDragging = false;
+          document.body.style.cursor = "";
+
+          document.removeEventListener("mousemove", drag);
+          document.removeEventListener("touchmove", drag);
+          document.removeEventListener("mouseup", endDrag);
+          document.removeEventListener("touchend", endDrag);
+        }
+
+        // Auto-rotate when not interacting
+        let autoRotate = true;
+        let rotateInterval;
+
+        function startAutoRotate() {
+          rotateInterval = setInterval(() => {
+            if (!isDragging && autoRotate) {
+              currentAngle += 0.3;
+              gsap.to(ring, {
+                rotationY: currentAngle,
+                duration: 0.1,
+              });
+            }
+          }, 30);
+        }
+
+        ring.addEventListener("mouseenter", () => {
+          autoRotate = false;
+        });
+
+        ring.addEventListener("mouseleave", () => {
+          autoRotate = true;
+        });
+
+        startAutoRotate();
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Previous initializations
+        init3DGallery();
+      });
+
+
+      
+    </script>
+  </body>
+</html>

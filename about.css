@@ -1,0 +1,301 @@
+
+/* About Page Specific Styles */
+.about-hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 5vw;
+    position: relative;
+}
+
+.about-hero h1 {
+    font-size: 10vw;
+    line-height: 8vw;
+    margin-bottom: 3vw;
+}
+
+.about-hero p {
+    font-size: 1.5vw;
+    line-height: 2vw;
+    width: 50%;
+    font-weight: 200;
+}
+
+.history-section {
+    padding: 8vw;
+    background-color: #f9f7f2;
+}
+
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: #658B38;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+    border-radius: 10px;
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+    box-sizing: border-box;
+    margin-bottom: 5vw;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease;
+}
+
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background-color: white;
+    border: 4px solid #658B38;
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.left {
+    left: 0;
+    text-align: right;
+    padding-right: 70px;
+}
+
+.right {
+    left: 50%;
+    padding-left: 70px;
+}
+
+.left::after {
+    right: -12px;
+}
+
+.right::after {
+    left: -12px;
+}
+
+.timeline-content {
+    padding: 20px 30px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+}
+
+.timeline-year {
+    font-weight: bold;
+    color: #658B38;
+    font-size: 1.5vw;
+    margin-bottom: 1vw;
+}
+
+.team-section {
+    padding: 8vw;
+    background-color: #EFEAE3;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3vw;
+    margin-top: 5vw;
+}
+
+.team-card {
+    background-color: white;
+    /* border-radius: 15px; */
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform 0.4s ease;
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.team-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.6s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.team-image {
+    height: 350px;
+    background-size: cover;
+    background-position: center;
+}
+
+.team-info {
+    padding: 2vw;
+}
+
+.team-info h3 {
+    font-size: 1.5vw;
+    margin-bottom: 0.5vw;
+}
+
+.team-info p {
+    color: #658B38;
+    font-weight: 200;
+    margin-bottom: 1vw;
+}
+
+.values-section {
+    padding: 8vw;
+    background-color: #658B38;
+    color: white;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3vw;
+    margin-top: 5vw;
+}
+
+.value-card {
+    background-color: rgba(255,255,255,0.1);
+    padding: 3vw;
+    border-radius: 15px;
+    transition: transform 0.4s ease;
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.value-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.6s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.value-icon {
+    font-size: 3vw;
+    margin-bottom: 1.5vw;
+}
+
+.stats-section {
+    padding: 8vw;
+    background-color: #EFEAE3;
+}
+.stats-section-no-color{
+background: none;
+}
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3vw;
+    margin-top: 5vw;
+}
+
+.stat-card {
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.stat-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.6s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.stat-number {
+    font-size: 4vw;
+    font-weight: bold;
+    color: #658B38;
+    margin-bottom: 1vw;
+}
+
+.stat-label {
+    font-size: 1.2vw;
+    font-weight: 200;
+}
+
+@media (max-width: 768px) {
+    .about-hero h1 {
+        font-size: 15vw;
+        line-height: 13vw;
+    }
+    
+    .about-hero p {
+        font-size: 4vw;
+        line-height: 5vw;
+        width: 100%;
+    }
+    
+    .history-section, .team-section, .values-section, .stats-section {
+        padding: 15vw 5vw;
+    }
+    
+    .timeline::after {
+        left: 31px;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+        text-align: left;
+    }
+    
+    .timeline-item::after {
+        left: 18px;
+    }
+    
+    .left, .right {
+        left: 0;
+    }
+    
+    .team-grid, .values-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .team-info h3 {
+        font-size: 5vw;
+    }
+    
+    .team-info p {
+        font-size: 3.5vw;
+    }
+    
+    .timeline-year {
+        font-size: 4vw;
+    }
+    
+    .stat-number {
+        font-size: 8vw;
+    }
+    
+    .stat-label {
+        font-size: 3.5vw;
+    }
+    
+    .value-icon {
+        font-size: 8vw;
+    }
+}
+
+
+#space{
+    width : 100%;
+    height: 80vh;
+}

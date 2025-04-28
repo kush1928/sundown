@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sundown Studio</title>
+    <link rel="shortcut icon" href="./icon.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="style.css">
+    <style>
+      /* Product Page Specific Styles */
+      .product-hero {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 5vw;
+        position: relative;
+        z-index: 10;
+      }
+
+      .product-hero-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+
+      .product-hero-left {
+        width: 40%;
+      }
+
+      .product-hero-right {
+        width: 50%;
+      }
+
+      .product-hero h1 {
+        font-size: 8vw;
+        line-height: 7vw;
+        font-weight: 400;
+        margin-bottom: 3vw;
+      }
+
+      .product-hero h3 {
+        font-size: 1.5vw;
+        font-weight: 300;
+        line-height: 1.6;
+      }
+
+      .product-collection {
+        padding: 10vw 5vw;
+        background-color: #efeae3;
+        position: relative;
+      }
+
+      .collection-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 5vw;
+      }
+
+      .collection-header h2 {
+        font-size: 4vw;
+        font-weight: 400;
+        line-height: 1;
+      }
+
+      .collection-header p {
+        width: 30%;
+        font-size: 1.2vw;
+        line-height: 1.6;
+      }
+
+      /* New Product Card Styles */
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2vw;
+      }
+
+      .product-card {
+        display: grid;
+       
+        overflow: hidden;
+        cursor: pointer;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+      }
+
+      .product-card > * {
+        grid-area: 1/1;
+        transition: 0.4s;
+      }
+
+      .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .product-image {
+        height: 25vw;
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+      }
+
+      .product-caption {
+        display: grid;
+        align-items: end;
+        font-family: sans-serif;
+        font-size: 2rem;
+        font-weight: bold;
+        color: #0000;
+        padding: 1.5rem;
+        background: var(--c, #658b38aa);
+        clip-path: inset(0 var(--_i, 100%) 0 0);
+        -webkit-mask: linear-gradient(#000 0 0), linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        -webkit-mask-clip: text, padding-box;
+        margin: -1px;
+      }
+
+      .product-card:hover .product-caption {
+        --_i: 0%;
+      }
+
+      .product-card:hover .product-image {
+        transform: scale(1.1);
+      }
+
+      .product-info {
+        padding: 2vw;
+        background: white;
+        transform: translateY(var(--_i, 100%));
+      }
+
+      .product-card:hover .product-info {
+        --_i: 0;
+      }
+
+      @supports not (-webkit-mask-clip: text) {
+        .product-caption {
+          -webkit-mask: none;
+          color: white;
+        }
+      }
+
+      .product-badge {
+        position: absolute;
+        top: 2vw;
+        right: 2vw;
+        background: #658b38;
+        color: white;
+        padding: 0.5vw 1vw;
+        border-radius: 20px;
+        font-size: 0.8vw;
+        font-weight: 500;
+        z-index: 2;
+      }
+
+      .product-info h3 {
+        font-size: 1.5vw;
+        margin-bottom: 0.5vw;
+      }
+
+      .product-info p {
+        font-size: 1vw;
+        color: #666;
+        margin-bottom: 1.5vw;
+        line-height: 1.6;
+      }
+
+      .product-specs {
+        display: flex;
+        gap: 1vw;
+        margin-bottom: 1.5vw;
+        flex-wrap: wrap;
+      }
+
+      .spec-item {
+        background: #f5f5f5;
+        padding: 0.5vw 1vw;
+        border-radius: 5px;
+        font-size: 0.8vw;
+      }
+
+      .product-cta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .product-price {
+        font-size: 1.5vw;
+        font-weight: 500;
+      }
+
+      .product-button {
+        background: #658b38;
+        color: white;
+        border: none;
+        padding: 0.8vw 1.5vw;
+        border-radius: 5px;
+        font-size: 1vw;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .product-button:hover {
+        background: #3b4c28;
+      }
+
+      .product-features {
+        padding: 10vw 5vw;
+        background: white;
+      }
+
+      .features-header {
+        text-align: center;
+        margin-bottom: 5vw;
+      }
+
+      .features-header h2 {
+        font-size: 4vw;
+        font-weight: 400;
+        margin-bottom: 1vw;
+      }
+
+      .features-header p {
+        font-size: 1.2vw;
+        color: #666;
+        width: 50%;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3vw;
+      }
+
+      .feature-card {
+        text-align: center;
+        padding: 3vw;
+      }
+
+      .feature-icon {
+        height: 5vw;
+        width: 5vw;
+        background: #658b38;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 2vw;
+        color: white;
+        font-size: 2vw;
+      }
+
+      .feature-card h3 {
+        font-size: 1.5vw;
+        margin-bottom: 1vw;
+      }
+
+      .feature-card p {
+        font-size: 1vw;
+        color: #666;
+        line-height: 1.6;
+      }
+
+      .product-showcase {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 0 5vw;
+        background: #efeae3;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .showcase-content {
+        width: 40%;
+        z-index: 10;
+      }
+
+      .showcase-content h2 {
+        font-size: 4vw;
+        font-weight: 400;
+        margin-bottom: 2vw;
+      }
+
+      .showcase-content p {
+        font-size: 1.2vw;
+        line-height: 1.6;
+        margin-bottom: 3vw;
+      }
+
+      .showcase-image {
+        position: absolute;
+        right: 5vw;
+        width: 50%;
+        height: 80%;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 768px) {
+        .product-hero-content {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .product-hero-left,
+        .product-hero-right {
+          width: 100%;
+        }
+
+        .product-hero h1 {
+          font-size: 12vw;
+          line-height: 11vw;
+          margin-bottom: 5vw;
+        }
+
+        .product-hero h3 {
+          font-size: 4vw;
+        }
+
+        .collection-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .collection-header h2 {
+          font-size: 10vw;
+          margin-bottom: 5vw;
+        }
+
+        .collection-header p {
+          width: 100%;
+          font-size: 4vw;
+        }
+
+        .product-grid {
+          grid-template-columns: 1fr;
+          gap: 5vw;
+        }
+
+        .product-image {
+          height: 60vw;
+        }
+
+        .product-caption {
+          font-size: 1.5rem;
+        }
+
+        .product-badge {
+          font-size: 3vw;
+          padding: 1vw 2vw;
+        }
+
+        .product-info h3 {
+          font-size: 5vw;
+        }
+
+        .product-info p {
+          font-size: 3.5vw;
+        }
+
+        .spec-item {
+          font-size: 3vw;
+          padding: 1vw 2vw;
+        }
+
+        .product-price {
+          font-size: 5vw;
+        }
+
+        .product-button {
+          font-size: 3.5vw;
+          padding: 2vw 4vw;
+        }
+
+        .features-header h2 {
+          font-size: 10vw;
+        }
+
+        .features-header p {
+          width: 100%;
+          font-size: 4vw;
+        }
+
+        .features-grid {
+          grid-template-columns: 1fr;
+          gap: 8vw;
+        }
+
+        .feature-icon {
+          height: 15vw;
+          width: 15vw;
+          font-size: 6vw;
+        }
+
+        .feature-card h3 {
+          font-size: 6vw;
+        }
+
+        .feature-card p {
+          font-size: 4vw;
+        }
+
+        .product-showcase {
+          height: auto;
+          padding: 10vw 5vw;
+          flex-direction: column;
+        }
+
+        .showcase-content {
+          width: 100%;
+          margin-bottom: 5vw;
+        }
+
+        .showcase-content h2 {
+          font-size: 8vw;
+        }
+
+        .showcase-content p {
+          font-size: 4vw;
+        }
+
+        .showcase-image {
+          position: relative;
+          right: auto;
+          width: 100%;
+          height: 50vw;
+          margin-top: 5vw;
+        }
+      }
+
+      /* Added for scroll color change effect */
+      body {
+        transition: background-color 0.5s ease;
+      }
+      .initial-bg {
+        background-color: #f8f4ed;
+      }
+      .scrolled-bg {
+        background-color: #658b38;
+      }
+    </style>
+  </head>
+
+  <body class="initial-bg">
+    <div id="loader">
+      <h1>CLASSY</h1>
+      <h1>STRONG</h1>
+      <h1>HIGH QUALITY</h1>
+    </div>
+
+    <div id="fixed-image"></div>
+    <div id="main">
+      <!-- Header (Same as original) -->
+      <div id="page1">
+        <nav>
+          <h1>
+            <b>SUN<span style="color: #658b38">TUFF</span></b>
+          </h1>
+          <div id="nav-part2">
+            <h4><a href="#">Home</a></h4>
+            <h4><a href="#">Products</a></h4>
+            <h4><a href="#">About</a></h4>
+            <h4><a href="#">Contact</a></h4>
+          </div>
+          <h3>Menu</h3>
+        </nav>
+
+        <!-- Product Hero Section -->
+        <div class="product-hero">
+          <div class="product-hero-content">
+            <div class="product-hero-left">
+              <h3>
+                Premium glass solutions engineered for performance, durability,
+                and aesthetic excellence.
+              </h3>
+            </div>
+            <div class="product-hero-right">
+              <h1>Glass <br />Products <br />Collection</h1>
+            </div>
+          </div>
+        </div>
+
+        <div id="hero-shape">
+          <div id="hero-1"></div>
+          <div id="hero-2"></div>
+          <div id="hero-3"></div>
+        </div>
+        <video autoplay loop muted src="./video.mp4"></video>
+      </div>
+
+      <!-- Product Collection Section -->
+      <div class="product-collection">
+        <div class="collection-header">
+          <h2>Our Premium Collections</h2>
+          <p>
+            Explore our range of high-performance glass products designed for
+            architectural and automotive applications.
+          </p>
+        </div>
+
+        <div class="product-grid">
+          <!-- Product 1 -->
+          <div class="product-card">
+            <div
+              class="product-image"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1600121848594-d8644e57abab?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+              "
+            >
+              <div class="product-badge">NEW</div>
+            </div>
+            <div class="product-caption" style="--c: #658b38aa">
+              PureVision™
+            </div>
+            <div class="product-info">
+              <h3>PureVision™ Clarity Glass</h3>
+              <p>
+                Crystal-clear glass with 99% light transmission and superior
+                optical quality.
+              </p>
+              <div class="product-specs">
+                <div class="spec-item">UV Protection</div>
+                <div class="spec-item">Anti-Glare</div>
+                <div class="spec-item">Scratch Resistant</div>
+              </div>
+              <div class="product-cta">
+                <div class="product-price">$45/m²</div>
+                <button class="product-button">View Details</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 2 -->
+          <div class="product-card">
+            <div
+              class="product-image"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+              "
+            >
+              <div class="product-badge">BESTSELLER</div>
+            </div>
+            <div class="product-caption" style="--c: #658b38aa">
+              SolarShade™
+            </div>
+            <div class="product-info">
+              <h3>SolarShade™ Energy Glass</h3>
+              <p>
+                Advanced solar control glass that reduces heat while maintaining
+                natural light.
+              </p>
+              <div class="product-specs">
+                <div class="spec-item">Heat Reduction</div>
+                <div class="spec-item">Energy Saving</div>
+                <div class="spec-item">UV Blocking</div>
+              </div>
+              <div class="product-cta">
+                <div class="product-price">$68/m²</div>
+                <button class="product-button">View Details</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 3 -->
+          <div class="product-card">
+            <div
+              class="product-image"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+              "
+            >
+              <div class="product-badge">INNOVATION</div>
+            </div>
+            <div class="product-caption" style="--c: #658b38aa">
+              SecuraView™
+            </div>
+            <div class="product-info">
+              <h3>SecuraView™ Privacy Glass</h3>
+              <p>
+                Switchable privacy glass that transforms from clear to opaque
+                with the flip of a switch.
+              </p>
+              <div class="product-specs">
+                <div class="spec-item">Smart Glass</div>
+                <div class="spec-item">Instant Privacy</div>
+                <div class="spec-item">Energy Efficient</div>
+              </div>
+              <div class="product-cta">
+                <div class="product-price">$120/m²</div>
+                <button class="product-button">View Details</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 4 -->
+          <div class="product-card">
+            <div
+              class="product-image"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+              "
+            >
+              <div class="product-badge">ECO-FRIENDLY</div>
+            </div>
+            <div class="product-caption" style="--c: #658b38aa">EcoLux™</div>
+            <div class="product-info">
+              <h3>EcoLux™ Sustainable Glass</h3>
+              <p>
+                Environmentally friendly glass made with recycled materials and
+                low-emission coating.
+              </p>
+              <div class="product-specs">
+                <div class="spec-item">Recycled Content</div>
+                <div class="spec-item">Low-E Coating</div>
+                <div class="spec-item">Carbon Neutral</div>
+              </div>
+              <div class="product-cta">
+                <div class="product-price">$55/m²</div>
+                <button class="product-button">View Details</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 5 -->
+          <div class="product-card">
+            <div
+              class="product-image"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1600607688969-a5bfcd646154?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+              "
+            >
+              <div class="product-badge">PREMIUM</div>
+            </div>
+            <div class="product-caption" style="--c: #658b38aa">
+              ArmorShield™
+            </div>
+            <div class="product-info">
+              <h3>ArmorShield™ Safety Glass</h3>
+              <p>
+                Laminated safety glass that provides protection against impacts
+                and forced entry.
+              </p>
+              <div class="product-specs">
+                <div class="spec-item">Impact Resistant</div>
+                <div class="spec-item">Security Grade</div>
+                <div class="spec-item">Soundproof</div>
+              </div>
+              <div class="product-cta">
+                <div class="product-price">$85/m²</div>
+                <button class="product-button">View Details</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 6 -->
+          <div class="product-card">
+            <div
+              class="product-image"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+              "
+            >
+              <div class="product-badge">TECHNOLOGY</div>
+            </div>
+            <div class="product-caption" style="--c: #658b38aa">
+              ThermaClear™
+            </div>
+            <div class="product-info">
+              <h3>ThermaClear™ Insulated Glass</h3>
+              <p>
+                Double-glazed units with superior thermal insulation properties
+                for all climates.
+              </p>
+              <div class="product-specs">
+                <div class="spec-item">Thermal Insulation</div>
+                <div class="spec-item">Condensation Control</div>
+                <div class="spec-item">Energy Star Rated</div>
+              </div>
+              <div class="product-cta">
+                <div class="product-price">$75/m²</div>
+                <button class="product-button">View Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Features Section -->
+      <div class="product-features">
+        <div class="features-header">
+          <h2>Why Choose SunTuff Glass</h2>
+          <p>
+            Our products are engineered to deliver exceptional performance,
+            durability, and aesthetic appeal for both residential and commercial
+            applications.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">✓</div>
+            <h3>Superior Durability</h3>
+            <p>
+              Engineered to withstand extreme conditions while maintaining
+              clarity and structural integrity.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">☀</div>
+            <h3>Energy Efficiency</h3>
+            <p>
+              Advanced coatings reduce energy consumption while maximizing
+              natural light transmission.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🛡</div>
+            <h3>Enhanced Safety</h3>
+            <p>
+              Tempered and laminated options provide superior protection without
+              compromising visibility.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🔊</div>
+            <h3>Noise Reduction</h3>
+            <p>
+              Special acoustic formulations create quieter, more peaceful
+              environments.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🌱</div>
+            <h3>Sustainable</h3>
+            <p>
+              Eco-friendly manufacturing processes and recyclable materials
+              reduce environmental impact.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">✨</div>
+            <h3>Aesthetic Excellence</h3>
+            <p>
+              Beautiful designs that enhance architectural aesthetics while
+              delivering performance.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Showcase Section -->
+      <div class="product-showcase">
+        <div class="showcase-content">
+          <h2>PureVision™ Clarity Glass</h2>
+          <p>
+            Our flagship product delivers unparalleled optical clarity with 99%
+            light transmission, making it ideal for applications where true
+            color representation and brightness are essential. The advanced
+            nano-coating provides scratch resistance and easy cleaning while
+            maintaining perfect transparency.
+          </p>
+          <button class="product-button">Explore PureVision™</button>
+        </div>
+        <div
+          class="showcase-image"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+          "
+        ></div>
+      </div>
+
+      <!-- Rest of your existing sections can go here -->
+      <div id="page4">
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-color: #658b38">
+              Featured: PureVision™ Clarity Glass
+            </div>
+            <div class="swiper-slide" style="background-color: #3b4c28">
+              New: SolarShade™ Energy Glass
+            </div>
+            <div class="swiper-slide" style="background-color: #769e46">
+              Innovation: SecuraView™ Privacy Glass
+            </div>
+            <div class="swiper-slide" style="background-color: #658b38">
+              Award-Winning: EcoLux™ Sustainable Glass
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer (Same as original) -->
+    <div id="footer">
+      <div id="footer-div"></div>
+      <h1>SunTuFF</h1>
+      <div id="footer-bottom">
+        <div class="copyright">
+          © 2024 Sun Tuff Pvt Ltd. All rights reserved.
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      // Initialize Locomotive Scroll
+      const scroll = new LocomotiveScroll({
+        el: document.querySelector("#main"),
+        smooth: true,
+      });
+
+      // Initialize Swiper
+      var swiper = new Swiper(".mySwiper", {
+        slidesPerView: "auto",
+        centeredSlides: true,
+        spaceBetween: 100,
+        loop: true,
+        autoplay: {
+          delay: 2000,
+          disableOnInteraction: false,
+        },
+      });
+
+      // Loader animation
+      setTimeout(function () {
+        document.getElementById("loader").style.top = "-100%";
+      }, 3000);
+
+      // Add touch support for mobile devices
+      document.querySelectorAll(".product-card").forEach((card) => {
+        card.addEventListener("touchstart", function () {
+          if (this.style.transform === "translateY(-10px)") {
+            this.style.transform = "translateY(0)";
+          } else {
+            this.style.transform = "translateY(-10px)";
+          }
+        });
+      });
+
+      // Scroll color change effect
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 100) {
+          document.body.classList.add('scrolled-bg');
+          document.body.classList.remove('initial-bg');
+        } else {
+          document.body.classList.remove('scrolled-bg');
+          document.body.classList.add('initial-bg');
+        }
+      });
+
+      // Also trigger on Locomotive Scroll
+      document.querySelector("#main").addEventListener('scroll', function() {
+        const scrollPosition = this.scrollTop;
+        if (scrollPosition > 100) {
+          document.body.classList.add('scrolled-bg');
+          document.body.classList.remove('initial-bg');
+        } else {
+          document.body.classList.remove('scrolled-bg');
+          document.body.classList.add('initial-bg');
+        }
+      });
+    </script>
+  </body>
+</html>
