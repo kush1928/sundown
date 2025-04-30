@@ -45,17 +45,22 @@
         line-height: 7vw;
         font-weight: 400;
         margin-bottom: 3vw;
+        background: linear-gradient(45deg, #1A1A1A, #3A3A3A);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       }
 
       .product-hero h3 {
         font-size: 1.5vw;
         font-weight: 300;
         line-height: 1.6;
+        color: #3A3A3A;
       }
 
       .product-collection {
         padding: 10vw 5vw;
-        background-color: #efeae3;
+        background-color: #F5F5F5;
         position: relative;
       }
 
@@ -70,12 +75,14 @@
         font-size: 4vw;
         font-weight: 400;
         line-height: 1;
+        color: #1A1A1A;
       }
 
       .collection-header p {
         width: 30%;
         font-size: 1.2vw;
         line-height: 1.6;
+        color: #3A3A3A;
       }
 
       /* New Product Card Styles */
@@ -87,11 +94,14 @@
 
       .product-card {
         display: grid;
-       
         overflow: hidden;
         cursor: pointer;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         transition: transform 0.4s ease, box-shadow 0.4s ease;
+        border-radius: 15px;
+        background: #F5F5F5;
+        position: relative;
+        isolation: isolate;
       }
 
       .product-card > * {
@@ -109,6 +119,9 @@
         background-size: cover;
         background-position: center;
         width: 100%;
+        border-radius: 15px;
+        position: relative;
+        z-index: 1;
       }
 
       .product-caption {
@@ -119,12 +132,14 @@
         font-weight: bold;
         color: #0000;
         padding: 1.5rem;
-        background: var(--c, #658b38aa);
+        background: var(--c, #7F5AF0aa);
         clip-path: inset(0 var(--_i, 100%) 0 0);
         -webkit-mask: linear-gradient(#000 0 0), linear-gradient(#000 0 0);
         -webkit-mask-composite: xor;
         -webkit-mask-clip: text, padding-box;
         margin: -1px;
+        position: relative;
+        z-index: 2;
       }
 
       .product-card:hover .product-caption {
@@ -137,8 +152,10 @@
 
       .product-info {
         padding: 2vw;
-        background: white;
+        background: #F5F5F5;
         transform: translateY(var(--_i, 100%));
+        position: relative;
+        z-index: 3;
       }
 
       .product-card:hover .product-info {
@@ -156,23 +173,31 @@
         position: absolute;
         top: 2vw;
         right: 2vw;
-        background: #658b38;
+        background: #7F5AF0;
         color: white;
         padding: 0.5vw 1vw;
         border-radius: 20px;
         font-size: 0.8vw;
         font-weight: 500;
-        z-index: 2;
+        z-index: 10;
+        box-shadow: 0 5px 15px rgba(127, 90, 240, 0.3);
+        transform: translateZ(0);
+        pointer-events: none;
+        white-space: nowrap;
+        max-width: 90%;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       .product-info h3 {
         font-size: 1.5vw;
         margin-bottom: 0.5vw;
+        color: #1A1A1A;
       }
 
       .product-info p {
         font-size: 1vw;
-        color: #666;
+        color: #3A3A3A;
         margin-bottom: 1.5vw;
         line-height: 1.6;
       }
@@ -185,10 +210,11 @@
       }
 
       .spec-item {
-        background: #f5f5f5;
+        background: rgba(127, 90, 240, 0.1);
         padding: 0.5vw 1vw;
         border-radius: 5px;
         font-size: 0.8vw;
+        color: #7F5AF0;
       }
 
       .product-cta {
@@ -200,26 +226,29 @@
       .product-price {
         font-size: 1.5vw;
         font-weight: 500;
+        color: #1A1A1A;
       }
 
       .product-button {
-        background: #658b38;
+        background: #7F5AF0;
         color: white;
         border: none;
         padding: 0.8vw 1.5vw;
         border-radius: 5px;
         font-size: 1vw;
         cursor: pointer;
-        transition: background 0.3s ease;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(127, 90, 240, 0.3);
       }
 
       .product-button:hover {
-        background: #3b4c28;
+        background: #6B46C1;
+        transform: translateY(-2px);
       }
 
       .product-features {
         padding: 10vw 5vw;
-        background: white;
+        background: #F5F5F5;
       }
 
       .features-header {
@@ -231,11 +260,12 @@
         font-size: 4vw;
         font-weight: 400;
         margin-bottom: 1vw;
+        color: #1A1A1A;
       }
 
       .features-header p {
         font-size: 1.2vw;
-        color: #666;
+        color: #3A3A3A;
         width: 50%;
         margin: 0 auto;
         line-height: 1.6;
@@ -250,12 +280,21 @@
       .feature-card {
         text-align: center;
         padding: 3vw;
+        background: #F5F5F5;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
       }
 
       .feature-icon {
         height: 5vw;
         width: 5vw;
-        background: #658b38;
+        background: #7F5AF0;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -263,16 +302,18 @@
         margin: 0 auto 2vw;
         color: white;
         font-size: 2vw;
+        box-shadow: 0 5px 15px rgba(127, 90, 240, 0.3);
       }
 
       .feature-card h3 {
         font-size: 1.5vw;
         margin-bottom: 1vw;
+        color: #1A1A1A;
       }
 
       .feature-card p {
         font-size: 1vw;
-        color: #666;
+        color: #3A3A3A;
         line-height: 1.6;
       }
 
@@ -281,7 +322,7 @@
         display: flex;
         align-items: center;
         padding: 0 5vw;
-        background: #efeae3;
+        background: #F5F5F5;
         position: relative;
         overflow: hidden;
       }
@@ -295,12 +336,14 @@
         font-size: 4vw;
         font-weight: 400;
         margin-bottom: 2vw;
+        color: #1A1A1A;
       }
 
       .showcase-content p {
         font-size: 1.2vw;
         line-height: 1.6;
         margin-bottom: 3vw;
+        color: #3A3A3A;
       }
 
       .showcase-image {
@@ -311,12 +354,14 @@
         background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       }
 
       /* New Glass Categories Section */
       .glass-categories {
         padding: 10vw 5vw;
-        background-color: white;
+        background-color: #F5F5F5;
       }
 
       .categories-header {
@@ -328,11 +373,12 @@
         font-size: 4vw;
         font-weight: 400;
         margin-bottom: 1vw;
+        color: #1A1A1A;
       }
 
       .categories-header p {
         font-size: 1.2vw;
-        color: #666;
+        color: #3A3A3A;
         width: 50%;
         margin: 0 auto;
         line-height: 1.6;
@@ -348,7 +394,7 @@
         position: relative;
         height: 30vw;
         overflow: hidden;
-        border-radius: 10px;
+        border-radius: 15px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         transition: all 0.4s ease;
       }
@@ -379,7 +425,7 @@
         left: 0;
         width: 100%;
         padding: 3vw;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+        background: linear-gradient(to top, rgba(26, 26, 26, 0.8), transparent);
         color: white;
         transform: translateY(30%);
         transition: transform 0.4s ease;
@@ -461,6 +507,8 @@
         .product-badge {
           font-size: 3vw;
           padding: 1vw 2vw;
+          top: 3vw;
+          right: 3vw;
         }
 
         .product-info h3 {
@@ -568,20 +616,243 @@
         }
       }
 
-      /* Added for scroll color change effect */
-      body {
-        transition: background-color 0.5s ease;
+      /* Swiper Styles */
+      .swiper {
+        width: 100%;
+        height: 100%;
+        padding: 2vw 0;
+        position: relative;
+        z-index: 20;
+        margin: 0 auto;
+        overflow: visible;
       }
-      .initial-bg {
-        background-color: #f8f4ed;
+
+      .swiper-wrapper {
+        position: relative;
+        z-index: 20;
       }
-      .scrolled-bg {
-        background-color: #658b38;
+
+      .swiper-slide {
+        width: 80%;
+        height: 30vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        position: relative;
+        z-index: 20;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .slide-content {
+        text-align: center;
+        color: white;
+        padding: 2vw;
+        position: relative;
+        z-index: 21;
+      }
+
+      .swiper-pagination {
+        bottom: 1vw !important;
+        position: relative;
+        z-index: 22;
+      }
+
+      .swiper-button-next,
+      .swiper-button-prev {
+        color: white;
+        opacity: 0.7;
+        transition: opacity 0.3s ease;
+        position: relative;
+        z-index: 22;
+      }
+
+      #page4 {
+        position: relative;
+        z-index: 20;
+        padding: 5vw 0;
+        background: #F5F5F5;
+        overflow: visible;
+      }
+
+      /* Mobile Menu Styles */
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(245, 245, 245, 0.98);
+        z-index: 1000;
+        padding: 5vw;
+        transform: translateY(-100%);
+        transition: transform 0.5s ease;
+      }
+
+      .mobile-menu.active {
+        transform: translateY(0);
+      }
+
+      .mobile-menu h4 {
+        font-size: 6vw;
+        margin: 5vw 0;
+        text-align: center;
+      }
+
+      .mobile-menu a {
+        color: #1A1A1A;
+        text-decoration: none;
+        display: block;
+        transition: color 0.3s ease;
+      }
+
+      .mobile-menu a:hover {
+        color: #7F5AF0;
+      }
+
+      .menu-close {
+        position: absolute;
+        top: 5vw;
+        right: 5vw;
+        font-size: 8vw;
+        cursor: pointer;
+        color: #1A1A1A;
+      }
+
+      @media (max-width: 768px) {
+        nav h3 {
+          cursor: pointer;
+        }
+
+        #nav-part2 {
+          display: none;
+        }
+
+        .mobile-menu {
+          display: block;
+        }
+
+        /* Additional Mobile Responsive Styles */
+        .product-hero {
+          padding: 10vw 5vw;
+        }
+
+        .product-hero h1 {
+          font-size: 12vw;
+          line-height: 1.2;
+        }
+
+        .product-hero h3 {
+          font-size: 4vw;
+        }
+
+        .product-grid {
+          grid-template-columns: 1fr;
+          gap: 5vw;
+        }
+
+        .product-card {
+          margin: 0 5vw;
+        }
+
+        .product-image {
+          height: 50vw;
+        }
+
+        .product-info {
+          padding: 5vw;
+        }
+
+        .product-info h3 {
+          font-size: 5vw;
+        }
+
+        .product-info p {
+          font-size: 3.5vw;
+        }
+
+        .product-specs {
+          gap: 2vw;
+        }
+
+        .spec-item {
+          font-size: 3vw;
+          padding: 1vw 2vw;
+        }
+
+        .product-price {
+          font-size: 5vw;
+        }
+
+        .product-button {
+          font-size: 3.5vw;
+          padding: 2vw 4vw;
+        }
+
+        .features-grid {
+          grid-template-columns: 1fr;
+          gap: 8vw;
+        }
+
+        .feature-card {
+          padding: 5vw;
+        }
+
+        .feature-icon {
+          height: 15vw;
+          width: 15vw;
+          font-size: 6vw;
+        }
+
+        .feature-card h3 {
+          font-size: 6vw;
+        }
+
+        .feature-card p {
+          font-size: 4vw;
+        }
+
+        .showcase-content {
+          width: 100%;
+          padding: 5vw;
+        }
+
+        .showcase-content h2 {
+          font-size: 8vw;
+        }
+
+        .showcase-content p {
+          font-size: 4vw;
+        }
+
+        .showcase-image {
+          height: 50vw;
+        }
+
+        .swiper-slide {
+          width: 90%;
+          height: 50vw;
+        }
+
+        .slide-content h3 {
+          font-size: 3vw;
+        }
+
+        .slide-content h2 {
+          font-size: 5vw;
+        }
+
+        .slide-content p {
+          font-size: 2.5vw;
+        }
       }
     </style>
   </head>
 
-  <body class="initial-bg">
+  <body>
     <div id="loader">
       <h1>CLASSY</h1>
       <h1>STRONG</h1>
@@ -594,16 +865,25 @@
       <div id="page1">
         <nav>
           <h1>
-            <b>SUN<span style="color: #658b38">TUFF</span></b>
+            <b>SUN<span style="color: #7F5AF0">TUFF</span></b>
           </h1>
           <div id="nav-part2">
-            <h4><a href="#">Home</a></h4>
-            <h4><a href="#">Products</a></h4>
-            <h4><a href="#">About</a></h4>
-            <h4><a href="#">Contact</a></h4>
+            <h4><a href="index.html">Home</a></h4>
+            <h4><a href="newProductsPage.html">Products</a></h4>
+            <h4><a href="about.html">About</a></h4>
+            <h4><a href="contact.html">Contact</a></h4>
           </div>
-          <h3>Menu</h3>
+          <h3 class="menu-toggle">Menu</h3>
         </nav>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+          <div class="menu-close">×</div>
+          <h4><a href="index.html">Home</a></h4>
+          <h4><a href="newProductsPage.html">Products</a></h4>
+          <h4><a href="about.html">About</a></h4>
+          <h4><a href="contact.html">Contact</a></h4>
+        </div>
 
         <!-- Product Hero Section -->
         <div class="product-hero">
@@ -649,7 +929,7 @@
             >
               <div class="product-badge">NEW</div>
             </div>
-            <div class="product-caption" style="--c: #658b38aa">
+            <div class="product-caption" style="--c: #7F5AF0aa">
               PureVision™
             </div>
             <div class="product-info">
@@ -680,7 +960,7 @@
             >
               <div class="product-badge">BESTSELLER</div>
             </div>
-            <div class="product-caption" style="--c: #658b38aa">
+            <div class="product-caption" style="--c: #7F5AF0aa">
               SolarShade™
             </div>
             <div class="product-info">
@@ -711,7 +991,7 @@
             >
               <div class="product-badge">INNOVATION</div>
             </div>
-            <div class="product-caption" style="--c: #658b38aa">
+            <div class="product-caption" style="--c: #7F5AF0aa">
               SecuraView™
             </div>
             <div class="product-info">
@@ -742,7 +1022,7 @@
             >
               <div class="product-badge">ECO-FRIENDLY</div>
             </div>
-            <div class="product-caption" style="--c: #658b38aa">EcoLux™</div>
+            <div class="product-caption" style="--c: #7F5AF0aa">EcoLux™</div>
             <div class="product-info">
               <h3>EcoLux™ Sustainable Glass</h3>
               <p>
@@ -771,7 +1051,7 @@
             >
               <div class="product-badge">PREMIUM</div>
             </div>
-            <div class="product-caption" style="--c: #658b38aa">
+            <div class="product-caption" style="--c: #7F5AF0aa">
               ArmorShield™
             </div>
             <div class="product-info">
@@ -802,7 +1082,7 @@
             >
               <div class="product-badge">TECHNOLOGY</div>
             </div>
-            <div class="product-caption" style="--c: #658b38aa">
+            <div class="product-caption" style="--c: #7F5AF0aa">
               ThermaClear™
             </div>
             <div class="product-info">
@@ -918,19 +1198,38 @@
       <div id="page4">
         <div class="swiper mySwiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background-color: #658b38">
-              Featured: PureVision™ Clarity Glass
+            <div class="swiper-slide" style="background-color: #7F5AF0">
+              <div class="slide-content">
+                <h3>Featured</h3>
+                <h2>PureVision™ Clarity Glass</h2>
+                <p>Experience unparalleled optical clarity with our flagship product</p>
+              </div>
             </div>
-            <div class="swiper-slide" style="background-color: #3b4c28">
-              New: SolarShade™ Energy Glass
+            <div class="swiper-slide" style="background-color: #6B46C1">
+              <div class="slide-content">
+                <h3>New</h3>
+                <h2>SolarShade™ Energy Glass</h2>
+                <p>Advanced solar control for optimal energy efficiency</p>
+              </div>
             </div>
-            <div class="swiper-slide" style="background-color: #769e46">
-              Innovation: SecuraView™ Privacy Glass
+            <div class="swiper-slide" style="background-color: #553C9A">
+              <div class="slide-content">
+                <h3>Innovation</h3>
+                <h2>SecuraView™ Privacy Glass</h2>
+                <p>Smart glass technology for instant privacy control</p>
+              </div>
             </div>
-            <div class="swiper-slide" style="background-color: #658b38">
-              Award-Winning: EcoLux™ Sustainable Glass
+            <div class="swiper-slide" style="background-color: #7F5AF0">
+              <div class="slide-content">
+                <h3>Award-Winning</h3>
+                <h2>EcoLux™ Sustainable Glass</h2>
+                <p>Environmentally friendly glass solutions</p>
+              </div>
             </div>
           </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
         </div>
       </div>
 
@@ -1041,16 +1340,58 @@
         smooth: true,
       });
 
-      // Initialize Swiper
+      // Initialize Swiper with improved configuration
       var swiper = new Swiper(".mySwiper", {
         slidesPerView: "auto",
         centeredSlides: true,
-        spaceBetween: 100,
+        spaceBetween: 30,
         loop: true,
         autoplay: {
-          delay: 2000,
+          delay: 3000,
           disableOnInteraction: false,
+          pauseOnMouseEnter: true,
         },
+        speed: 800,
+        effect: "coverflow",
+        coverflowEffect: {
+          rotate: 0,
+          stretch: 0,
+          depth: 100,
+          modifier: 2,
+          slideShadows: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+          dynamicBullets: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: "auto",
+            spaceBetween: 30,
+          }
+        },
+        on: {
+          init: function () {
+            this.slides.forEach(slide => {
+              slide.style.transition = "transform 0.5s ease";
+            });
+          },
+          slideChange: function () {
+            this.slides.forEach(slide => {
+              slide.style.transform = "scale(1)";
+            });
+            this.slides[this.activeIndex].style.transform = "scale(1.05)";
+          }
+        }
       });
 
       // Loader animation
@@ -1067,29 +1408,6 @@
             this.style.transform = "translateY(-10px)";
           }
         });
-      });
-
-      // Scroll color change effect
-      window.addEventListener('scroll', function() {
-        if (window.scrollY > 100) {
-          document.body.classList.add('scrolled-bg');
-          document.body.classList.remove('initial-bg');
-        } else {
-          document.body.classList.remove('scrolled-bg');
-          document.body.classList.add('initial-bg');
-        }
-      });
-
-      // Also trigger on Locomotive Scroll
-      document.querySelector("#main").addEventListener('scroll', function() {
-        const scrollPosition = this.scrollTop;
-        if (scrollPosition > 100) {
-          document.body.classList.add('scrolled-bg');
-          document.body.classList.remove('initial-bg');
-        } else {
-          document.body.classList.remove('scrolled-bg');
-          document.body.classList.add('initial-bg');
-        }
       });
     </script>
   </body>

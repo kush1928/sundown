@@ -31,22 +31,29 @@ function swiperAnimation() {
     });
 }
 function menuAnimation() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const menuClose = document.querySelector('.menu-close');
 
-    var menu = document.querySelector("nav h3")
-    var full = document.querySelector("#full-scr")
-    var navimg = document.querySelector("nav img")
-    var flag = 0
-    menu.addEventListener("click", function () {
-        if (flag == 0) {
-            full.style.top = 0
-            navimg.style.opacity = 0
-            flag = 1
-        } else {
-            full.style.top = "-100%"
-            navimg.style.opacity = 1
-            flag = 0
-        }
-    })
+    if (menuToggle && mobileMenu && menuClose) {
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        menuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+    }
 }
 
 function loaderAnimation() {
