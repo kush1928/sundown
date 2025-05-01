@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - SunTuff</title>
+    <link rel="shortcut icon" href="./icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Product Details Page Specific Styles */
+        .product-details {
+            min-height: 100vh;
+            padding: 5vw;
+            background-color: #F5F5F5;
+        }
+
+        .product-header {
+            display: flex;
+            gap: 5vw;
+            margin-bottom: 5vw;
+        }
+
+        .product-image {
+            width: 50%;
+            height: 40vw;
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-info {
+            width: 45%;
+        }
+
+        .product-badge {
+            display: inline-block;
+            background: #506680;
+            color: white;
+            padding: 0.5vw 1vw;
+            border-radius: 20px;
+            font-size: 0.8vw;
+            font-weight: 500;
+            margin-bottom: 1vw;
+        }
+
+        .product-title {
+            font-size: 3vw;
+            font-weight: 400;
+            color: #1A1A1A;
+            margin-bottom: 1vw;
+        }
+
+        .product-price {
+            font-size: 2vw;
+            color: #506680;
+            margin-bottom: 2vw;
+        }
+
+        .product-description {
+            font-size: 1.2vw;
+            line-height: 1.6;
+            color: #3A3A3A;
+            margin-bottom: 2vw;
+        }
+
+        .product-specs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1vw;
+            margin-bottom: 3vw;
+        }
+
+        .spec-item {
+            background: rgba(80, 102, 128, 0.1);
+            padding: 1vw;
+            border-radius: 5px;
+            font-size: 1vw;
+            color: #506680;
+        }
+
+        .product-features {
+            margin-bottom: 3vw;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1vw;
+            margin-bottom: 1vw;
+        }
+
+        .feature-icon {
+            width: 2vw;
+            height: 2vw;
+            background: #506680;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1vw;
+        }
+
+        .feature-text {
+            font-size: 1.1vw;
+            color: #3A3A3A;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2vw;
+        }
+
+        .cta-button {
+            padding: 1vw 2vw;
+            font-size: 1vw;
+            font-weight: 500;
+            background: transparent;
+            color: #506680;
+            border: 1px solid #506680;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #506680;
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .cta-button:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .cta-button:active {
+            transform: translateY(0);
+        }
+
+        .back-button {
+            position: fixed;
+            top: 2vw;
+            left: 2vw;
+            background: #506680;
+            color: white;
+            width: 3vw;
+            height: 3vw;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .back-button:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .product-header {
+                flex-direction: column;
+            }
+
+            .product-image, .product-info {
+                width: 100%;
+            }
+
+            .product-image {
+                height: 60vw;
+            }
+
+            .product-badge {
+                font-size: 3vw;
+                padding: 1vw 2vw;
+            }
+
+            .product-title {
+                font-size: 8vw;
+            }
+
+            .product-price {
+                font-size: 6vw;
+            }
+
+            .product-description {
+                font-size: 4vw;
+            }
+
+            .spec-item {
+                font-size: 3vw;
+                padding: 2vw;
+            }
+
+            .feature-icon {
+                width: 6vw;
+                height: 6vw;
+                font-size: 3vw;
+            }
+
+            .feature-text {
+                font-size: 3.5vw;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .cta-button {
+                padding: 3vw 6vw;
+                font-size: 4vw;
+            }
+
+            .back-button {
+                width: 10vw;
+                height: 10vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="loader">
+        <h1>DETAILS</h1>
+        <h1>SPECIFICATIONS</h1>
+        <h1>FEATURES</h1>
+    </div>
+
+    <div id="fixed-image"></div>
+    <div id="main">
+        <div id="page1">
+            <nav>
+                <h1><b>SUN<span style="color: #506680">TUFF</span></b></h1>
+                <div id="nav-part2">
+                    <h4><a href="index.html">Home</a></h4>
+                    <h4><a href="newProductsPage.html">Products</a></h4>
+                    <h4><a href="about.html">About</a></h4>
+                    <h4><a href="contact.html">Contact</a></h4>
+                </div>
+                <h3 class="menu-toggle">Menu</h3>
+            </nav>
+
+            <a href="newProductsPage.html" class="back-button">←</a>
+
+            <div class="product-details">
+                <div class="product-header">
+                    <div class="product-image" id="productImage"></div>
+                    <div class="product-info">
+                        <div class="product-badge" id="productBadge"></div>
+                        <h1 class="product-title" id="productTitle"></h1>
+                        <div class="product-price" id="productPrice"></div>
+                        <p class="product-description" id="productDescription"></p>
+                        <div class="product-specs" id="productSpecs"></div>
+                        <div class="product-features" id="productFeatures"></div>
+                        <div class="cta-buttons">
+                            <button class="cta-button" onclick="window.location.href='contact.html'">Contact Sales</button>
+                            <button class="cta-button" onclick="window.location.href='newProductsPage.html'">View All Products</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <div id="footer-div"></div>
+        <h1>SunTuFF</h1>
+        <div id="footer-bottom">
+            <div class="copyright">
+                © 2024 Sun Tuff Pvt Ltd. All rights reserved.
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
+    <script>
+        // Product data
+        const products = {
+            'purevision': {
+                title: 'PureVision™ Clarity Glass',
+                badge: 'NEW',
+                price: '$45/m²',
+                description: 'Crystal-clear glass with 99% light transmission and superior optical quality. Perfect for applications where true color representation and brightness are essential.',
+                image: 'https://images.unsplash.com/photo-1600121848594-d8644e57abab?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                specs: ['UV Protection', 'Anti-Glare', 'Scratch Resistant', '99% Light Transmission'],
+                features: [
+                    { icon: '✓', text: 'Superior optical clarity' },
+                    { icon: '☀', text: 'Maximum light transmission' },
+                    { icon: '🛡', text: 'Advanced scratch resistance' },
+                    { icon: '✨', text: 'Easy to clean surface' }
+                ]
+            },
+            'solarshade': {
+                title: 'SolarShade™ Energy Glass',
+                badge: 'BESTSELLER',
+                price: '$68/m²',
+                description: 'Advanced solar control glass that reduces heat while maintaining natural light. Ideal for energy-efficient buildings and comfortable living spaces.',
+                image: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                specs: ['Heat Reduction', 'Energy Saving', 'UV Blocking', 'Natural Light'],
+                features: [
+                    { icon: '☀', text: 'Up to 70% heat reduction' },
+                    { icon: '⚡', text: 'Energy Star certified' },
+                    { icon: '🛡', text: '99% UV protection' },
+                    { icon: '✨', text: 'Maintains natural light' }
+                ]
+            },
+            'securaview': {
+                title: 'SecuraView™ Privacy Glass',
+                badge: 'INNOVATION',
+                price: '$120/m²',
+                description: 'Switchable privacy glass that transforms from clear to opaque with the flip of a switch. Perfect for modern offices and residential spaces.',
+                image: 'https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                specs: ['Smart Glass', 'Instant Privacy', 'Energy Efficient', 'Remote Control'],
+                features: [
+                    { icon: '🔌', text: 'Instant privacy control' },
+                    { icon: '⚡', text: 'Low energy consumption' },
+                    { icon: '📱', text: 'Smart home compatible' },
+                    { icon: '✨', text: 'Sleek modern design' }
+                ]
+            },
+            'ecolux': {
+                title: 'EcoLux™ Sustainable Glass',
+                badge: 'ECO-FRIENDLY',
+                price: '$55/m²',
+                description: 'Environmentally friendly glass made with recycled materials and low-emission coating. A sustainable choice for eco-conscious projects.',
+                image: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                specs: ['Recycled Content', 'Low-E Coating', 'Carbon Neutral', 'Sustainable'],
+                features: [
+                    { icon: '♻', text: '40% recycled content' },
+                    { icon: '🌱', text: 'Carbon neutral production' },
+                    { icon: '⚡', text: 'Energy efficient' },
+                    { icon: '✨', text: 'LEED certified' }
+                ]
+            },
+            'armorshield': {
+                title: 'ArmorShield™ Safety Glass',
+                badge: 'PREMIUM',
+                price: '$85/m²',
+                description: 'Laminated safety glass that provides protection against impacts and forced entry. Ideal for security-conscious applications.',
+                image: 'https://images.unsplash.com/photo-1600607688969-a5bfcd646154?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                specs: ['Impact Resistant', 'Security Grade', 'Soundproof', 'Safety'],
+                features: [
+                    { icon: '🛡', text: 'Impact resistant' },
+                    { icon: '🔊', text: 'Sound reduction' },
+                    { icon: '🔒', text: 'Security grade' },
+                    { icon: '✨', text: 'Clear visibility' }
+                ]
+            },
+            'thermaclear': {
+                title: 'ThermaClear™ Insulated Glass',
+                badge: 'TECHNOLOGY',
+                price: '$75/m²',
+                description: 'Double-glazed units with superior thermal insulation properties for all climates. Perfect for energy-efficient buildings.',
+                image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                specs: ['Thermal Insulation', 'Condensation Control', 'Energy Star Rated', 'Climate Control'],
+                features: [
+                    { icon: '❄', text: 'Superior insulation' },
+                    { icon: '💧', text: 'Condensation control' },
+                    { icon: '⚡', text: 'Energy Star rated' },
+                    { icon: '✨', text: 'All climate solution' }
+                ]
+            }
+        };
+
+        // Get product ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+
+        // Load product data
+        if (productId && products[productId]) {
+            const product = products[productId];
+            
+            // Update page title
+            document.title = `${product.title} - SunTuff`;
+            
+            // Update product image
+            document.getElementById('productImage').style.backgroundImage = `url('${product.image}')`;
+            
+            // Update product badge
+            document.getElementById('productBadge').textContent = product.badge;
+            
+            // Update product title
+            document.getElementById('productTitle').textContent = product.title;
+            
+            // Update product price
+            document.getElementById('productPrice').textContent = product.price;
+            
+            // Update product description
+            document.getElementById('productDescription').textContent = product.description;
+            
+            // Update product specs
+            const specsContainer = document.getElementById('productSpecs');
+            product.specs.forEach(spec => {
+                const specItem = document.createElement('div');
+                specItem.className = 'spec-item';
+                specItem.textContent = spec;
+                specsContainer.appendChild(specItem);
+            });
+            
+            // Update product features
+            const featuresContainer = document.getElementById('productFeatures');
+            product.features.forEach(feature => {
+                const featureItem = document.createElement('div');
+                featureItem.className = 'feature-item';
+                featureItem.innerHTML = `
+                    <div class="feature-icon">${feature.icon}</div>
+                    <div class="feature-text">${feature.text}</div>
+                `;
+                featuresContainer.appendChild(featureItem);
+            });
+        } else {
+            // Redirect to products page if product not found
+            window.location.href = 'newProductsPage.html';
+        }
+
+        // Initialize Locomotive Scroll
+        const scroll = new LocomotiveScroll({
+            el: document.querySelector("#main"),
+            smooth: true,
+        });
+
+        // Loader animation
+        setTimeout(function() {
+            document.getElementById("loader").style.top = "-100%";
+        }, 3000);
+    </script>
+</body>
+</html> 

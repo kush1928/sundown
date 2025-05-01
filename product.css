@@ -1,6 +1,6 @@
 .product-features {
     padding: 8vw;
-    background-color: #efeae3;
+    background-color: #EDEAE0;
   }
 
   .feature-grid {
@@ -19,7 +19,7 @@
   .feature-icon {
     height: 60px;
     width: 60px;
-    background-color: #658b38;
+    background-color: #506680;
     border-radius: 50%;
     margin-bottom: 2vw;
     display: flex;

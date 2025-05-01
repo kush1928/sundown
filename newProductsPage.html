@@ -173,14 +173,14 @@
         position: absolute;
         top: 2vw;
         right: 2vw;
-        background: #7F5AF0;
+        background: #506680;
         color: white;
         padding: 0.5vw 1vw;
         border-radius: 20px;
         font-size: 0.8vw;
         font-weight: 500;
         z-index: 10;
-        box-shadow: 0 5px 15px rgba(127, 90, 240, 0.3);
+        box-shadow: 0 5px 15px rgba(80, 102, 128, 0.3);
         transform: translateZ(0);
         pointer-events: none;
         white-space: nowrap;
@@ -210,11 +210,11 @@
       }
 
       .spec-item {
-        background: rgba(127, 90, 240, 0.1);
+        background: rgba(80, 102, 128, 0.1);
         padding: 0.5vw 1vw;
         border-radius: 5px;
         font-size: 0.8vw;
-        color: #7F5AF0;
+        color: #506680;
       }
 
       .product-cta {
@@ -230,20 +230,45 @@
       }
 
       .product-button {
-        background: #7F5AF0;
-        color: white;
-        border: none;
+        background: transparent;
+        color: #506680;
+        border: 1px solid #506680;
         padding: 0.8vw 1.5vw;
-        border-radius: 5px;
         font-size: 1vw;
         cursor: pointer;
+        position: relative;
+        overflow: hidden;
         transition: all 0.3s ease;
-        box-shadow: 0 5px 15px rgba(127, 90, 240, 0.3);
+        letter-spacing: 0.5px;
+        box-shadow: none;
+      }
+
+      .product-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #506680;
+        z-index: -1;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s ease;
       }
 
       .product-button:hover {
-        background: #6B46C1;
+        color: white;
         transform: translateY(-2px);
+      }
+
+      .product-button:hover::before {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+
+      .product-button:active {
+        transform: translateY(0);
       }
 
       .product-features {
@@ -294,7 +319,7 @@
       .feature-icon {
         height: 5vw;
         width: 5vw;
-        background: #7F5AF0;
+        background: #506680;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -302,7 +327,7 @@
         margin: 0 auto 2vw;
         color: white;
         font-size: 2vw;
-        box-shadow: 0 5px 15px rgba(127, 90, 240, 0.3);
+        box-shadow: 0 5px 15px rgba(80, 102, 128, 0.3);
       }
 
       .feature-card h3 {
@@ -710,7 +735,7 @@
       }
 
       .mobile-menu a:hover {
-        color: #7F5AF0;
+        color: #506680;
       }
 
       .menu-close {
@@ -865,7 +890,7 @@
       <div id="page1">
         <nav>
           <h1>
-            <b>SUN<span style="color: #7F5AF0">TUFF</span></b>
+            <b>SUN<span style="color: #506680">TUFF</span></b>
           </h1>
           <div id="nav-part2">
             <h4><a href="index.html">Home</a></h4>
@@ -929,7 +954,7 @@
             >
               <div class="product-badge">NEW</div>
             </div>
-            <div class="product-caption" style="--c: #7F5AF0aa">
+            <div class="product-caption" style="--c: #506680aa">
               PureVision™
             </div>
             <div class="product-info">
@@ -945,7 +970,7 @@
               </div>
               <div class="product-cta">
                 <div class="product-price">$45/m²</div>
-                <button class="product-button">View Details</button>
+                <button class="product-button" onclick="window.location.href='productDetails.html?id=purevision'">View Details</button>
               </div>
             </div>
           </div>
@@ -960,7 +985,7 @@
             >
               <div class="product-badge">BESTSELLER</div>
             </div>
-            <div class="product-caption" style="--c: #7F5AF0aa">
+            <div class="product-caption" style="--c: #506680aa">
               SolarShade™
             </div>
             <div class="product-info">
@@ -976,7 +1001,7 @@
               </div>
               <div class="product-cta">
                 <div class="product-price">$68/m²</div>
-                <button class="product-button">View Details</button>
+                <button class="product-button" onclick="window.location.href='productDetails.html?id=solarshade'">View Details</button>
               </div>
             </div>
           </div>
@@ -991,7 +1016,7 @@
             >
               <div class="product-badge">INNOVATION</div>
             </div>
-            <div class="product-caption" style="--c: #7F5AF0aa">
+            <div class="product-caption" style="--c: #506680aa">
               SecuraView™
             </div>
             <div class="product-info">
@@ -1007,7 +1032,7 @@
               </div>
               <div class="product-cta">
                 <div class="product-price">$120/m²</div>
-                <button class="product-button">View Details</button>
+                <button class="product-button" onclick="window.location.href='productDetails.html?id=securaview'">View Details</button>
               </div>
             </div>
           </div>
@@ -1022,7 +1047,9 @@
             >
               <div class="product-badge">ECO-FRIENDLY</div>
             </div>
-            <div class="product-caption" style="--c: #7F5AF0aa">EcoLux™</div>
+            <div class="product-caption" style="--c: #506680aa">
+              EcoLux™
+            </div>
             <div class="product-info">
               <h3>EcoLux™ Sustainable Glass</h3>
               <p>
@@ -1036,7 +1063,7 @@
               </div>
               <div class="product-cta">
                 <div class="product-price">$55/m²</div>
-                <button class="product-button">View Details</button>
+                <button class="product-button" onclick="window.location.href='productDetails.html?id=ecolux'">View Details</button>
               </div>
             </div>
           </div>
@@ -1051,7 +1078,7 @@
             >
               <div class="product-badge">PREMIUM</div>
             </div>
-            <div class="product-caption" style="--c: #7F5AF0aa">
+            <div class="product-caption" style="--c: #506680aa">
               ArmorShield™
             </div>
             <div class="product-info">
@@ -1067,7 +1094,7 @@
               </div>
               <div class="product-cta">
                 <div class="product-price">$85/m²</div>
-                <button class="product-button">View Details</button>
+                <button class="product-button" onclick="window.location.href='productDetails.html?id=armorshield'">View Details</button>
               </div>
             </div>
           </div>
@@ -1082,7 +1109,7 @@
             >
               <div class="product-badge">TECHNOLOGY</div>
             </div>
-            <div class="product-caption" style="--c: #7F5AF0aa">
+            <div class="product-caption" style="--c: #506680aa">
               ThermaClear™
             </div>
             <div class="product-info">
@@ -1098,7 +1125,7 @@
               </div>
               <div class="product-cta">
                 <div class="product-price">$75/m²</div>
-                <button class="product-button">View Details</button>
+                <button class="product-button" onclick="window.location.href='productDetails.html?id=thermaclear'">View Details</button>
               </div>
             </div>
           </div>
@@ -1198,28 +1225,28 @@
       <div id="page4">
         <div class="swiper mySwiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background-color: #7F5AF0">
+            <div class="swiper-slide" style="background-color: #506680">
               <div class="slide-content">
                 <h3>Featured</h3>
                 <h2>PureVision™ Clarity Glass</h2>
                 <p>Experience unparalleled optical clarity with our flagship product</p>
               </div>
             </div>
-            <div class="swiper-slide" style="background-color: #6B46C1">
+            <div class="swiper-slide" style="background-color: #3A3A3A">
               <div class="slide-content">
                 <h3>New</h3>
                 <h2>SolarShade™ Energy Glass</h2>
                 <p>Advanced solar control for optimal energy efficiency</p>
               </div>
             </div>
-            <div class="swiper-slide" style="background-color: #553C9A">
+            <div class="swiper-slide" style="background-color: #1A1A1A">
               <div class="slide-content">
                 <h3>Innovation</h3>
                 <h2>SecuraView™ Privacy Glass</h2>
                 <p>Smart glass technology for instant privacy control</p>
               </div>
             </div>
-            <div class="swiper-slide" style="background-color: #7F5AF0">
+            <div class="swiper-slide" style="background-color: #506680">
               <div class="slide-content">
                 <h3>Award-Winning</h3>
                 <h2>EcoLux™ Sustainable Glass</h2>
